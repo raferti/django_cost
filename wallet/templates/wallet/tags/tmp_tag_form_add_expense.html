@@ -1,0 +1,7 @@
+<div>
+    <form action="{% url 'exp_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
+</div>

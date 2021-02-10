@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+    <p>Список категорий</p>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{{ category.get_absolute_url }}">{{ category }}</a> | {{ category.cou }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>{{ eat_prod }}</p>
+
+    <hr>
+    <p>Total: {{ total.total }}</p>
+
+    <!-- Загружаем форму из шаблонного тэга -->
+    {% edit_form_tag %}
+
+{% endblock %}

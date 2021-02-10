@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Покупка{% endblock %}
+
+{% block content %}
+    <h1>Покупка {{ expense.title }}</h1>
+
+    <form action="{% url 'exp_upd' expense.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
+
+    <hr>
+    <p><a href="{% url 'add' expense.id %}">В корзину</a> </p>
+    <hr>
+    <h3>В вашей корзине</h3>
+    <p>{{ cart }}</p>
+    <p>{{ goods.first.title }}</p>
+
+
+
+{% endblock %}

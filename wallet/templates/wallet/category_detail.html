@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load tags %}
+
+{% block title %}Категория {% endblock %}
+
+{% block content %}
+    {% sum_all_expense_in_category category.id as total %}
+
+    <h1>Категория {{ category|lower }}</h1>
+
+    <ul>
+        {% for expense in category.expenses.all %}
+            <li><a href="{{ expense.get_absolute_url }}">{{ expense.title }}</a> - {{ expense.amount }} р.</li>
+        {% endfor %}
+    </ul>
+
+    <p>Итого: {{ total.cou }}</p>
+
+    <form action="{% url 'cat_detail' category.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
+
+
+
+{#    {% for expens in expenses %}#}
+{#        <p>{{ expens.title }}</p>#}
+{#    {% endfor %}#}
+
+
+
+{% endblock %}
