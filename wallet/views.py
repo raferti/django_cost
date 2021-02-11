@@ -58,6 +58,7 @@ class ExpenseCreate(CreateView):
 
 
 class ExpenseUpdateView(UpdateView):
+    """Обновление покупки"""
     model = Expense
     fields = ('title', 'category', 'description', 'amount')
     context_object_name = 'expense'
