@@ -66,8 +66,9 @@ class ExpenseUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ExpenseUpdateView, self).get_context_data(**kwargs)
-        exp = Expense.objects.filter(pk__in=self.request.session['prod_id'])
-        context['goods'] = exp
+        if pk := self.request.session.get('prod_id', ''):
+            exp = Expense.objects.filter(pk__in=pk)
+            context['goods'] = exp
         return context
 
     def form_valid(self, form):
