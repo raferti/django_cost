@@ -23,12 +23,12 @@ class Category(models.Model):
 
 class Expense(models.Model):
     """Затраты"""
-    title = models.CharField(max_length=50)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='expenses')
+    title = models.CharField('Название', max_length=50)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='expenses', verbose_name='Категория')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='expenses')
-    description = models.CharField(max_length=255, blank=True, null=True)
-    amount = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now=True)
+    description = models.CharField('Описание', max_length=255, blank=True, null=True)
+    amount = models.IntegerField('Цена', default=0)
+    created = models.DateTimeField('Дата добавления', auto_now=True)
 
     class Meta:
         verbose_name = 'Затрата'
