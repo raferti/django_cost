@@ -4,4 +4,3 @@ venv/
 __pycache__/
 .touch.swp
 *.sqlite3
-django_cost/settings.py
